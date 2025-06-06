@@ -8,7 +8,7 @@ import com.example.jetpackcomposecource.ui.theme.Purple40
 
 
 @Composable
-fun Greeting(){
+fun Greeting() {
     Column {
 
         Text(text = "Hello Jetpack Compose", color = Purple40)
@@ -17,7 +17,7 @@ fun Greeting(){
 
 @Preview(showSystemUi = true)
 @Composable
-fun GreetingPreview(){
+fun GreetingPreview() {
     Greeting()
 }
 
