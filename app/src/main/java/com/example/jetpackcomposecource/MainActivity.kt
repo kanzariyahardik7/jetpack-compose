@@ -6,6 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.example.jetpackcomposecource.FundamentalConcepts.AccessStringResource
 import com.example.jetpackcomposecource.FundamentalConcepts.Greeting
+import com.example.jetpackcomposecource.coreComponants.AnnotatedStringWithListenerSample
+import com.example.jetpackcomposecource.templete.SubscriptionScreen
 import com.example.jetpackcomposecource.ui.theme.JetpackComposeCourceTheme
 
 class MainActivity : ComponentActivity() {
@@ -13,7 +15,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            JetpackComposeCourceTheme { AccessStringResource() }
+            JetpackComposeCourceTheme { SubscriptionScreen() }
         }
     }
 }
