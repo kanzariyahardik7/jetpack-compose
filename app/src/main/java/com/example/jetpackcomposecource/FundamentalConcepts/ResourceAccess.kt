@@ -1,15 +1,17 @@
 package com.example.jetpackcomposecource.FundamentalConcepts
 
-import android.widget.ImageView
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -21,24 +23,38 @@ import com.example.jetpackcomposecource.R
 @Composable
 fun AccessStringResource() {
 
-    Column {
-        Box(
+    Box(
 
-            modifier = Modifier.height(100.dp),
+        modifier = Modifier.fillMaxSize(),
 
-            contentAlignment = Alignment.Center
-        ) {
+        contentAlignment = Alignment.Center
+
+
+    ) {
+
+        Column {
             Text(
-                text = stringResource(R.string.app_name),
-                color = colorResource(R.color.purple_500)
+                style = TextStyle(color = colorResource(R.color.orange)),
+                text = stringResource(R.string.fruit),
             )
-
+            Box(
+                contentAlignment = Alignment.Center
+            ) {
+                Image(
+                    alignment = Alignment.Center,
+                    modifier = Modifier
+                        .height(200.dp)
+                        .width(200.dp),
+                    contentScale = ContentScale.None,
+                    painter = painterResource(R.drawable.puma), contentDescription = "Doctor Image"
+                )
+            }
         }
 
-        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            Image(painter = painterResource(R.drawable.doctor), contentDescription = "Doctor Image")
-        }
+
     }
+
+
 }
 
 

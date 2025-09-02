@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Jetpack Compose Cource</string>
+    <string name="app_name">Jetpack Compose Course</string>
+    <string name="fruit">Fruit</string>
 </resources>

@@ -1,6 +1,9 @@
 package com.example.jetpackcomposecource.coreComponants
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.OutlinedTextField
@@ -23,53 +26,63 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun SimpeOutlinedTextFieldSample() {
+fun SimpleOutlinedTextFieldSample() {
 
-    var text by remember { mutableStateOf("") }
+    var text by rememberSaveable { mutableStateOf("") }
 
-    val rainbowColros =
-        listOf(Color.Red, Color.Cyan, Color.Yellow, Color.Green, Color.Blue)
+    var text1 by rememberSaveable { mutableStateOf("") }
 
-    val brush = remember { Brush.linearGradient(colors = rainbowColros) }
-
+    var pass by rememberSaveable { mutableStateOf("") }
 
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
 
-        TextField(value = text, onValueChange = { text = it }, textStyle = TextStyle(brush = brush))
+        Column {
+            OutlinedTextField(value = text, onValueChange = {
+                text = it
+            }, label = { Text(text = "Outlined Text field", color = Color.Red) })
 
-//        OutlinedTextField(
-//            value = text,
-//            onValueChange = { text = it },
-//            label = { Text(text = "Lable") })
+
+            TextField(
+                value = text1,
+                onValueChange = { text1 = it },
+                textStyle = TextStyle(color = Color.Green)
+            )
+
+            TextField(
+                value = pass, onValueChange = { pass = it },
+                label = {
+                    Text(text = "Password")
+                },
+
+                visualTransformation = PasswordVisualTransformation(),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
+            )
+
+
+        }
     }
+
+
+//    val rainbowColros =
+//        listOf(Color.Red, Color.Cyan, Color.Yellow, Color.Green, Color.Blue)
+//
+//    val brush = remember { Brush.linearGradient(colors = rainbowColros) }
+//
+//
+//    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+//
+//        TextField(value = text, onValueChange = { text = it }, textStyle = TextStyle(brush = brush))
+//
+////        OutlinedTextField(
+////            value = text,
+////            onValueChange = { text = it },
+////            label = { Text(text = "Lable") })
+//    }
 
 }
-
-
-@Composable
-fun PasswordTextField() {
-    var password by rememberSaveable {
-        mutableStateOf("")
-    }
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        TextField(
-            value = password,
-            onValueChange = { password = it },
-            label = {
-                Text(
-                    "Enter Password"
-                )
-            },
-            visualTransformation = PasswordVisualTransformation(),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
-        )
-    }
-
-}
-
 
 @Preview(showSystemUi = true)
 @Composable
-fun SimpeOutlinedTextFieldSamplePreview() {
-    PasswordTextField()
+fun SimpleOutlinedTextFieldSamplePreview() {
+    SimpleOutlinedTextFieldSample()
 }
